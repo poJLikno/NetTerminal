@@ -2,3 +2,10 @@
 *.xcodeproj
 *.lnk
 buffer_file.txt
+
+x64/
+Debug/
+Release/
+*.sln
+.vs/
+*.vcxproj*
