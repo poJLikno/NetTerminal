@@ -5,7 +5,7 @@
 #include <string>
 
 #ifdef _WIN32
-#include "NetSocket/NetSocket.h"
+#include "../NetSocket/NetSocket.h"
 #else
 #include "NetSocket.h"
 #endif

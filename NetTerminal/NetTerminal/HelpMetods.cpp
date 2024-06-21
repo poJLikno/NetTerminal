@@ -66,7 +66,8 @@ int NetTerminal::SmartRecieve(NetSocket *socket, char **buffer) {
 unsigned long long NetTerminal::GetFileData(char **buffer) {
     unsigned long long file_size = 0ull;
     
-    FILE *file = fopen("buffer_file.txt", "r");
+    FILE *file = nullptr;
+    fopen_s(&file, "buffer_file.txt", "r");
     if (file) {
         /* Get file size */
         fseek(file, 0, SEEK_END);
