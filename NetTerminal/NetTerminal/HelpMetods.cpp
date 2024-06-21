@@ -62,6 +62,20 @@ int NetTerminal::SmartRecieve(NetSocket *socket, char **buffer) {
     return result;
 }
 
+#ifndef _WIN32
+static errno_t fopen_s(FILE **f, const char *name, const char *mode) {
+    errno_t ret = 0;
+    if (!f) {
+        throw std::string("No file handler!");
+    }
+    *f = fopen(name, mode);
+    /* Can't be sure about 1-to-1 mapping of errno and MS' errno_t */
+    if (!*f)
+        ret = errno;
+    return ret;
+}
+#endif
+
 /* Need free memory after use */
 unsigned long long NetTerminal::GetFileData(char **buffer) {
     unsigned long long file_size = 0ull;
